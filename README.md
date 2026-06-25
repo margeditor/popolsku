@@ -1,22 +1,31 @@
-# Polish sounds — a pronunciation guide
+# Po polsku — an interactive guide to Polish
 
-A single-file interactive pronunciation guide for English speakers learning Polish. Six clickable cards cover the main sound groups, with example words, English meanings, phonetic breakdowns, and a speaker button on every word.
+An interactive language learning project for English speakers. Built as a set of standalone HTML modules, each covering a different aspect of Polish. No framework, no build step, no dependencies.
 
-## What's in it
+Live site: [margeditor.github.io/popolsku](https://margeditor.github.io/popolsku/)
 
-- **Six sound categories:** simple vowels, nasal vowels, surprise letters (ł/w/j), hissing sounds (sz/cz/ż/szcz), soft sounds (ś/ć/ź/ń), and the ts family (c/dz/dż)
+## Modules
+
+### Polish sounds (`polish-sounds.html`)
+A pronunciation guide covering the six main sound groups in Polish — simple vowels, nasal vowels, surprise letters (ł/w/j), hissing sounds (sz/cz/ż/szcz), soft sounds (ś/ć/ź/ń), and the ts family (c/dz/dż). Each group has example words with full phonetic breakdowns.
+
+### Polish basics (`vocabulary.html`)
+Essential vocabulary for a week in Poland — 49 words across seven everyday categories (greetings, numbers, getting around, food and drink, shopping, hotel, and emergencies). Built around the 7±2 rule: seven words per card, seven cards total.
+
+Both modules share:
 - **Phonetic guide on every word** — syllables split by ·, stressed syllable in capitals (e.g. `SHKOH · wah`)
 - **Speaker button** on every word — click to hear it pronounced
 - **Light and dark mode** — respects the system preference automatically
-- **No build step, no dependencies** — one HTML file, open in any browser
 
 ## Usage
 
-Download `polish-sounds.html` and open it in a browser. No server, no install.
+Open `index.html` in a browser to reach the menu, then navigate to either module. No server, no install required.
 
 ```
-open polish-sounds.html
+open index.html
 ```
+
+Each module also links back to the menu in the footer.
 
 ## Speaker button
 
@@ -41,17 +50,24 @@ If Web Speech API quality is not acceptable on your target platform, the next st
 
 ## Fonts
 
-The file loads **Lora** from Google Fonts, which requires an internet connection on first load (browsers will cache it after that). For fully offline use, remove the two `<link>` tags in the `<head>` and the `--serif` variable will fall back to Georgia.
+All files load **Lora** from Google Fonts, which requires an internet connection on first load (browsers will cache it after that). For fully offline use, remove the two `<link>` tags in the `<head>` of each file and the `--serif` variable will fall back to Georgia.
 
 ## File structure
 
 ```
-polish-sounds.html   # the whole project — HTML, CSS, and JS in one file
+index.html           # menu page — links to all modules
+polish-sounds.html   # pronunciation guide
+vocabulary.html      # vocabulary for travellers
 README.md
 ```
 
-## Extending it
+## Adding a new module
 
-All content lives in the `C` array near the top of the `<script>` block. Each entry is either a `"table"` type (used for simple vowels) or a `"groups"` type (used for everything else). Adding a new card means adding a new object to that array; the renderer handles the rest.
+1. Create a new HTML file using the same CSS variable structure as the existing modules
+2. Add a `← menu` link in the footer pointing to `index.html`
+3. Add a card for it in `index.html` following the same `.module-card` pattern
+4. Upload both files to the main branch — GitHub Pages will pick them up automatically
 
-The phonetic notation convention is: syllables separated by ` · `, stressed syllable in ALL CAPS. The `ph()` function reads this and highlights the stressed syllable automatically.
+## Phonetic notation
+
+Syllables are separated by ` · ` and the stressed syllable is written in ALL CAPS. The `ph()` function in each module reads this format and highlights the stressed syllable automatically. When writing phonetics, favour spellings an English speaker will attempt over spellings that are technically accurate but visually daunting.
