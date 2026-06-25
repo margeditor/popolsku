@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polish Sounds — A Pronunciation Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:       #f0f4f8;
+      --card:     #ffffff;
+      --surface:  #f5f7fa;
+      --warn-bg:  #fffbeb;
+      --t1:       #111827;
+      --t2:       #6b7280;
+      --t3:       #9ca3af;
+      --t-info:   #1d6fbc;
+      --t-warn:   #92400e;
+      --t-danger: #c0392b;
+      --b1:       #e5e7eb;
+      --b2:       #d1d5db;
+      --r1: 8px;
+      --r2: 12px;
+      --serif: 'Lora', Georgia, serif;
+      --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:       #111827;
+        --card:     #1f2937;
+        --surface:  #111827;
+        --warn-bg:  #1c1400;
+        --t1:       #f9fafb;
+        --t2:       #9ca3af;
+        --t3:       #6b7280;
+        --t-info:   #60a5fa;
+        --t-warn:   #fcd34d;
+        --t-danger: #f87171;
+        --b1:       #374151;
+        --b2:       #4b5563;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--t1);
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      line-height: 1.5;
+    }
+
+    .wrap { max-width: 680px; margin: 0 auto; }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+
+    .sub  { font-size: 13px; color: var(--t3); margin-bottom: 1.75rem; }
+    .note { font-size: 12px; color: var(--t3); margin-bottom: 1rem; }
+
+    .nav { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+
+    button {
+      font-family: var(--sans);
+      font-size: 13px;
+      padding: 5px 13px;
+      background: var(--card);
+      border: 0.5px solid var(--b2);
+      border-radius: 6px;
+      color: var(--t2);
+      cursor: pointer;
+      transition: background .15s, color .15s;
+      line-height: 1.5;
+    }
+    button:hover:not(:disabled) { background: var(--surface); color: var(--t1); }
+    button:active:not(:disabled) { transform: scale(0.98); }
+    button:disabled { opacity: 0.35; cursor: default; }
+    button.on {
+      background: #dbeafe;
+      color: var(--t-info);
+      border-color: transparent;
+      font-weight: 500;
+    }
+    @media (prefers-color-scheme: dark) { button.on { background: #1e3a5f; } }
+
+    @keyframes pf {
+      from { opacity: 0; transform: translateY(5px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: var(--card);
+      border: 0.5px solid var(--b1);
+      border-radius: var(--r2);
+      overflow: hidden;
+      animation: pf .18s ease;
+    }
+
+    .ch {
+      background: var(--surface);
+      padding: 1rem 1.25rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 0.5px solid var(--b1);
+    }
+    .ch-big {
+      position: absolute; right: 6px; top: -6px;
+      font-family: var(--serif);
+      font-size: 80px; font-weight: 500;
+      color: var(--t1); opacity: .06;
+      line-height: 1; pointer-events: none; user-select: none;
+    }
+    .ch-rule { font-size: 14px; font-weight: 500; max-width: 480px; line-height: 1.5; }
+    .ch-tip  { font-size: 13px; color: var(--t2); margin-top: 5px; line-height: 1.4; max-width: 480px; }
+
+    .cb { padding: 1.25rem; }
+
+    .grp { margin-bottom: 1.5rem; }
+    .grp:last-child { margin-bottom: 0; }
+
+    .gh {
+      display: flex; align-items: baseline; gap: 12px;
+      margin-bottom: 12px; padding-bottom: 8px;
+      border-bottom: 0.5px solid var(--b1);
+    }
+    .gl { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--t-info); line-height: 1; flex-shrink: 0; }
+    .gd { font-size: 13px; color: var(--t2); line-height: 1.4; }
+
+    .ex { background: var(--surface); border-radius: var(--r1); padding: 10px 12px; margin-bottom: 8px; }
+    .ex:last-child { margin-bottom: 0; }
+
+    .et { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .ew { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--t1); }
+    .em { font-size: 12px; color: var(--t2); font-style: italic; }
+
+    .speak-btn {
+      background: transparent;
+      border: none;
+      padding: 2px 4px;
+      cursor: pointer;
+      color: var(--t3);
+      border-radius: 4px;
+      line-height: 1;
+      transition: color .15s;
+    }
+    .speak-btn:hover:not(:disabled) { background: transparent; color: var(--t-info); }
+    .speak-btn:active:not(:disabled) { transform: scale(0.95); }
+    .speak-btn svg { display: block; }
+
+    .try { background: var(--warn-bg); border-radius: var(--r1); padding: 7px 10px; }
+    .tl  { font-size: 11px; color: var(--t-warn); margin-bottom: 2px; }
+    .tp  { font-family: var(--serif); font-size: 17px; }
+
+    .ps { color: inherit; }
+    .px { color: var(--t-danger); font-weight: 500; }
+    .pd { color: var(--t3); margin: 0 3px; }
+
+    .sep { height: 0.5px; background: var(--b1); margin: 1.25rem 0; }
+
+    .pager { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 1rem; padding: .5rem; }
+    .dots  { display: flex; gap: 5px; align-items: center; }
+    .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--b2); cursor: pointer;
+      border: none; padding: 0; flex-shrink: 0;
+      transition: all .15s;
+    }
+    .dot.on { background: var(--t-info); width: 18px; border-radius: 3px; }
+
+    .vt { width: 100%; border-collapse: collapse; }
+    .vt th {
+      font-size: 11px; color: var(--t3); padding-bottom: 8px;
+      text-align: left; border-bottom: 0.5px solid var(--b1);
+      font-weight: 400; padding-right: 10px;
+    }
+    .vt td { padding: 9px 10px 9px 0; border-bottom: 0.5px solid var(--b1); vertical-align: middle; }
+    .vt tr:last-child td { border-bottom: none; }
+    .vl  { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--t-info); }
+    .vs  { font-size: 12px; color: var(--t2); }
+    .vw  { font-family: var(--serif); font-size: 15px; font-weight: 500; }
+    .vm  { font-size: 12px; color: var(--t2); font-style: italic; }
+    .vwp { background: var(--warn-bg); border-radius: var(--r1); padding: 3px 8px; display: inline-block; }
+    .vp  { font-family: var(--serif); font-size: 13px; font-weight: 500; color: var(--t-warn); }
+
+    footer { text-align: center; font-size: 12px; color: var(--t3); margin-top: 2.5rem; }
+
+    .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <h2 class="sr">Polish pronunciation guide — interactive sound cards</h2>
+  <h1>Polish sounds</h1>
+  <p class="sub">A pronunciation guide for English speakers</p>
+  <p class="note">CAPS = stressed syllable &nbsp;·&nbsp; syllables separated by &middot;</p>
+  <nav class="nav" id="nav" aria-label="Sound categories"></nav>
+  <div id="card"></div>
+  <div class="pager" id="pgr"></div>
+  <footer><p>Sounds are consistent — once they click, they always click.</p></footer>
+</div>
+
+<script>
+const C = [
+  {
+    nav: "Simple vowels", big: "a",
+    rule: "Each vowel makes exactly one sound — no exceptions, ever.",
+    tip: "This makes Polish far more predictable than English. Once you know these, you can always read vowels correctly.",
+    type: "table",
+    rows: [
+      { ltr: "a",     like: '"ah"',        word: "mama",  meaning: "mom",    ph: "MAH · mah"  },
+      { ltr: "e",     like: '"eh"',        word: "ser",   meaning: "cheese", ph: "sehr"        },
+      { ltr: "i",     like: '"ee"',        word: "film",  meaning: "film",   ph: "feelm"       },
+      { ltr: "o",     like: '"oh"',        word: "dom",   meaning: "house",  ph: "dohm"        },
+      { ltr: "u / ó", like: '"oo" (same!)',word: "król",  meaning: "king",   ph: "krool"       },
+      { ltr: "y",     like: 'flat "ih"',   word: "ryba",  meaning: "fish",   ph: "RIH · bah"  },
+    ]
+  },
+  {
+    nav: "Nasal vowels", big: "ą",
+    rule: "These two vowels are nasal — air flows partly through the nose as you say them.",
+    tip: "Think of French \"bon\" or \"vin.\" At the end of a word, ę is usually softened to just a plain \"e\".",
+    type: "groups",
+    groups: [
+      { ltr: "ą", like: '"awn" — like "dawn" without the d, said through the nose', ex: [
+        { word: "są",   meaning: "they are", ph: "sawn"       },
+        { word: "dąb",  meaning: "oak tree", ph: "dawmp"      },
+        { word: "ząb",  meaning: "tooth",    ph: "zawmp"      },
+      ]},
+      { ltr: "ę", like: '"en" — like "bend" without the bd, said through the nose', ex: [
+        { word: "ręka",  meaning: "hand",       ph: "REN · kah" },
+        { word: "będę",  meaning: "I will be",  ph: "BEN · deh" },
+        { word: "imię",  meaning: "name",       ph: "EE · myeh" },
+      ]},
+    ]
+  },
+  {
+    nav: "Surprise letters", big: "ł",
+    rule: "Three letters that don't do what English speakers expect — each one is a different sound in disguise.",
+    tip: "Memorize these early. They appear constantly and will trip you up until they click.",
+    type: "groups",
+    groups: [
+      { ltr: "ł", like: 'English "w" — not "l" at all!', ex: [
+        { word: "łódź",  meaning: "boat",    ph: "woodj"       },
+        { word: "małpa", meaning: "monkey",  ph: "MAW · pah"   },
+        { word: "biały", meaning: "white",   ph: "BYAH · wih"  },
+      ]},
+      { ltr: "w", like: 'English "v" — not "w"', ex: [
+        { word: "woda",   meaning: "water",   ph: "VOH · dah"       },
+        { word: "wino",   meaning: "wine",    ph: "VEE · noh"       },
+        { word: "powoli", meaning: "slowly",  ph: "poh · VOH · lee" },
+      ]},
+      { ltr: "j", like: 'English "y" — like "yes" or "yellow"', ex: [
+        { word: "jutro", meaning: "tomorrow", ph: "YOO · troh" },
+        { word: "jest",  meaning: "is",       ph: "yehst"      },
+        { word: "już",   meaning: "already",  ph: "yoosh"      },
+      ]},
+    ]
+  },
+  {
+    nav: "Hissing sounds", big: "sz",
+    rule: "Polish has three distinct \"sh/zh\" sounds, plus the legendary szcz cluster.",
+    tip: "Each combination is perfectly consistent — master these and Polish stops looking like a random string of consonants.",
+    type: "groups",
+    groups: [
+      { ltr: "sz", like: '"sh" in shoe', ex: [
+        { word: "szkoła",   meaning: "school",  ph: "SHKOH · wah"     },
+        { word: "szansa",   meaning: "chance",  ph: "SHAN · sah"      },
+        { word: "szeroki",  meaning: "wide",    ph: "sheh · ROH · kee"},
+      ]},
+      { ltr: "cz", like: '"ch" in church', ex: [
+        { word: "czas",     meaning: "time",    ph: "chahs"           },
+        { word: "czarny",   meaning: "black",   ph: "CHAR · nih"      },
+        { word: "człowiek", meaning: "person",  ph: "CHWO · vyehk"    },
+      ]},
+      { ltr: "ż / rz", like: '"zh" — the "s" in measure or treasure', ex: [
+        { word: "żaba",  meaning: "frog",    ph: "ZHA · bah"   },
+        { word: "rzeka", meaning: "river",   ph: "ZHE · kah"   },
+        { word: "może",  meaning: "maybe",   ph: "MOH · zheh"  },
+      ]},
+      { ltr: "szcz", like: '"shch" — blend sh and ch together quickly', ex: [
+        { word: "szczyt",     meaning: "peak / summit", ph: "shchiht"          },
+        { word: "szczęście",  meaning: "happiness",     ph: "SHCHEN · shcheh"  },
+      ]},
+    ]
+  },
+  {
+    nav: "Soft sounds", big: "ś",
+    rule: "These are softened versions of familiar sounds — gentler, with a slight \"y\" tinge built in.",
+    tip: "Written two ways: with an accent mark (ś, ć, ź, ń) or with i after the letter (si, ci, zi, ni) — they sound identical.",
+    type: "groups",
+    groups: [
+      { ltr: "ś / si", like: 'soft "sh" — like "sh" with a gentle "y" underneath', ex: [
+        { word: "śnieg",   meaning: "snow",        ph: "shnyehg"      },
+        { word: "siostra", meaning: "sister",       ph: "SHYO · strah" },
+        { word: "miś",     meaning: "teddy bear",   ph: "meesh"        },
+      ]},
+      { ltr: "ć / ci", like: 'soft "ch" — gentler than the "ch" in church', ex: [
+        { word: "cicho",     meaning: "quietly",   ph: "CHEE · khoh"       },
+        { word: "ćwiczenie", meaning: "exercise",  ph: "chvee · CHEH · nyeh"},
+      ]},
+      { ltr: "ź / zi", like: 'soft "zh" — the "s" in measure, but softer', ex: [
+        { word: "zielony", meaning: "green",           ph: "zhyeh · LOH · nih" },
+        { word: "źródło",  meaning: "source / spring", ph: "ZHROOD · woh"      },
+      ]},
+      { ltr: "ń / ni", like: '"ny" — like the "ni" in canyon', ex: [
+        { word: "nie",  meaning: "no",          ph: "nyeh"        },
+        { word: "koń",  meaning: "horse",       ph: "kohny"       },
+        { word: "pani", meaning: "Mrs. / ma'am",ph: "PAH · nyee"  },
+      ]},
+    ]
+  },
+  {
+    nav: "The ts family", big: "c",
+    rule: "Polish puts ts/dz/j sounds anywhere in a word — start, middle, or end.",
+    tip: "Polish c is never \"k\" and never \"s\" — always \"ts\", without any exceptions.",
+    type: "groups",
+    groups: [
+      { ltr: "c", like: '"ts" — like the end of cats', ex: [
+        { word: "co",   meaning: "what",    ph: "tso"       },
+        { word: "cena", meaning: "price",   ph: "TSE · nah" },
+        { word: "nic",  meaning: "nothing", ph: "niets"     },
+      ]},
+      { ltr: "dz", like: '"dz" — the voiced partner of ts, like "adze"', ex: [
+        { word: "dzwon",  meaning: "bell", ph: "dzvohn"    },
+        { word: "bardzo", meaning: "very", ph: "BAR · dzoh"},
+      ]},
+      { ltr: "dż", like: 'English "j" — like the "j" in judge', ex: [
+        { word: "dżungla", meaning: "jungle", ph: "JOON · glah" },
+        { word: "dżins",   meaning: "jeans",  ph: "jeens"       },
+      ]},
+    ]
+  },
+];
+
+const SPEAKER = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>`;
+
+function speak(word) {
+  const u = new SpeechSynthesisUtterance(word);
+  u.lang = 'pl-PL';
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
+}
+
+let cur = 0;
+
+function ph(s) {
+  if (!s.includes('·')) return `<span class="ps">${s}</span>`;
+  const p = s.split('·').map(x => x.trim());
+  return p.map((t, i) => {
+    const stress = t === t.toUpperCase() && /[A-Z]/.test(t);
+    const sep = i < p.length - 1 ? '<span class="pd">&middot;</span>' : '';
+    return `<span class="${stress ? 'px' : 'ps'}">${t}</span>${sep}`;
+  }).join('');
+}
+
+function tbl(d) {
+  return `<table class="vt">
+    <thead><tr>
+      <th>Letter</th><th>Sounds like</th><th>Word</th><th>Means</th><th>Try saying it like this</th>
+    </tr></thead>
+    <tbody>${d.rows.map(r => `<tr>
+      <td class="vl">${r.ltr}</td>
+      <td class="vs">${r.like}</td>
+      <td class="vw"><span style="display:inline-flex;align-items:center;gap:6px;">${r.word}<button class="speak-btn" onclick="speak('${r.word}')" aria-label="Pronounce ${r.word}">${SPEAKER}</button></span></td>
+      <td class="vm">${r.meaning}</td>
+      <td><span class="vwp"><span class="vp">${ph(r.ph)}</span></span></td>
+    </tr>`).join('')}</tbody>
+  </table>`;
+}
+
+function grps(d) {
+  return d.groups.map((g, i) => `
+    ${i > 0 ? '<div class="sep"></div>' : ''}
+    <div class="grp">
+      <div class="gh">
+        <span class="gl">${g.ltr}</span>
+        <span class="gd">${g.like}</span>
+      </div>
+      ${g.ex.map(e => `
+        <div class="ex">
+          <div class="et">
+            <span style="display:flex;align-items:center;gap:8px;">
+              <span class="ew">${e.word}</span>
+              <button class="speak-btn" onclick="speak('${e.word}')" aria-label="Pronounce ${e.word}">${SPEAKER}</button>
+            </span>
+            <span class="em">${e.meaning}</span>
+          </div>
+          <div class="try">
+            <div class="tl">Try saying it like this</div>
+            <div class="tp">${ph(e.ph)}</div>
+          </div>
+        </div>`).join('')}
+    </div>`).join('');
+}
+
+function render() {
+  const d = C[cur];
+  document.getElementById('nav').innerHTML = C.map((c, i) =>
+    `<button class="${i === cur ? 'on' : ''}" onclick="go(${i})">${c.nav}</button>`
+  ).join('');
+  document.getElementById('card').innerHTML = `
+    <div class="card">
+      <div class="ch">
+        <div class="ch-big" aria-hidden="true">${d.big}</div>
+        <div class="ch-rule">${d.rule}</div>
+        <div class="ch-tip">${d.tip}</div>
+      </div>
+      <div class="cb">${d.type === 'table' ? tbl(d) : grps(d)}</div>
+    </div>`;
+  document.getElementById('pgr').innerHTML = `
+    <button onclick="go(${Math.max(0, cur - 1)})"${cur === 0 ? ' disabled' : ''}>← previous</button>
+    <div class="dots">${C.map((_, i) =>
+      `<button class="dot${i === cur ? ' on' : ''}" onclick="go(${i})" aria-label="Card ${i + 1} of ${C.length}"></button>`
+    ).join('')}</div>
+    <button onclick="go(${Math.min(C.length - 1, cur + 1)})"${cur === C.length - 1 ? ' disabled' : ''}>next →</button>`;
+}
+
+function go(n) { cur = n; render(); }
+render();
+</script>
+</body>
+</html>
