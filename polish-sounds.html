@@ -191,6 +191,8 @@
     .vp  { font-family: var(--serif); font-size: 13px; font-weight: 500; color: var(--t-warn); }
 
     footer { text-align: center; font-size: 12px; color: var(--t3); margin-top: 2.5rem; }
+    footer a { color: var(--t-info); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
 
     .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
   </style>
@@ -204,7 +206,10 @@
   <nav class="nav" id="nav" aria-label="Sound categories"></nav>
   <div id="card"></div>
   <div class="pager" id="pgr"></div>
-  <footer><p>Sounds are consistent — once they click, they always click.</p></footer>
+  <footer>
+    <p>Sounds are consistent — once they click, they always click.</p>
+    <p style="margin-top:6px;"><a href="index.html">← menu</a></p>
+  </footer>
 </div>
 
 <script>

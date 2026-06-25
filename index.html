@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Po polsku — an interactive guide to Polish</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:       #f0f4f8;
+      --card:     #ffffff;
+      --surface:  #f5f7fa;
+      --t1:       #111827;
+      --t2:       #6b7280;
+      --t3:       #9ca3af;
+      --t-info:   #1d6fbc;
+      --b1:       #e5e7eb;
+      --r2: 12px;
+      --serif: 'Lora', Georgia, serif;
+      --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:       #111827;
+        --card:     #1f2937;
+        --surface:  #111827;
+        --t1:       #f9fafb;
+        --t2:       #9ca3af;
+        --t3:       #6b7280;
+        --t-info:   #60a5fa;
+        --b1:       #374151;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--t1);
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      line-height: 1.5;
+    }
+
+    .wrap { max-width: 680px; margin: 0 auto; }
+
+    header { margin-bottom: 2.5rem; }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .tagline { font-size: 14px; color: var(--t3); }
+
+    .meaning {
+      display: inline-block;
+      font-size: 12px;
+      color: var(--t-info);
+      border: 0.5px solid var(--t-info);
+      border-radius: 4px;
+      padding: 1px 7px;
+      margin-top: 8px;
+      opacity: 0.7;
+    }
+
+    .modules {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .module-card {
+      background: var(--card);
+      border: 0.5px solid var(--b1);
+      border-radius: var(--r2);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color .2s;
+    }
+    .module-card:hover { border-color: var(--t-info); }
+
+    .mc-head {
+      background: var(--surface);
+      padding: 1.25rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 0.5px solid var(--b1);
+    }
+
+    .mc-big {
+      position: absolute; right: 6px; top: -4px;
+      font-family: var(--serif);
+      font-size: 72px; font-weight: 500;
+      color: var(--t1); opacity: .06;
+      line-height: 1; pointer-events: none; user-select: none;
+    }
+
+    .mc-title {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+
+    .mc-sub { font-size: 12px; color: var(--t2); }
+
+    .mc-body { padding: 1rem 1.25rem; }
+
+    .mc-desc {
+      font-size: 13px;
+      color: var(--t2);
+      line-height: 1.55;
+      margin-bottom: 1rem;
+    }
+
+    .mc-cta {
+      font-size: 13px;
+      color: var(--t-info);
+      font-weight: 500;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--t3);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Po polsku</h1>
+    <p class="tagline">An interactive guide to the Polish language</p>
+    <span class="meaning">po polsku — in Polish</span>
+  </header>
+
+  <div class="modules">
+
+    <a class="module-card" href="polish-sounds.html">
+      <div class="mc-head">
+        <div class="mc-big" aria-hidden="true">sz</div>
+        <div class="mc-title">Polish sounds</div>
+        <div class="mc-sub">Pronunciation guide</div>
+      </div>
+      <div class="mc-body">
+        <p class="mc-desc">How every letter and letter combination sounds in Polish — with phonetic examples you can actually say.</p>
+        <span class="mc-cta">Open →</span>
+      </div>
+    </a>
+
+    <a class="module-card" href="vocabulary.html">
+      <div class="mc-head">
+        <div class="mc-big" aria-hidden="true">cześć</div>
+        <div class="mc-title">Polish basics</div>
+        <div class="mc-sub">Vocabulary for travellers</div>
+      </div>
+      <div class="mc-body">
+        <p class="mc-desc">49 essential words across seven everyday categories — enough for a week in Poland.</p>
+        <span class="mc-cta">Open →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <footer><p>More modules coming soon.</p></footer>
+</div>
+</body>
+</html>
